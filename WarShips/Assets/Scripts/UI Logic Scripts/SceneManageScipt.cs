@@ -39,6 +39,7 @@ public class SceneManageScript : MonoBehaviour
             while (fakeProgress < progress)
             {
                 fakeProgress += Time.deltaTime * fakeLoadingSpeed;
+                fakeProgress = Mathf.Min(fakeProgress, progress);
                 slider1.value = fakeProgress;
                 progressText.text = Mathf.FloorToInt(fakeProgress * 100f) + "%";
                 yield return null;
