@@ -7,6 +7,10 @@ public class GameOverUI : MonoBehaviour
 {
     public Animator animator;
 
+    private void Start()
+    {
+        Time.timeScale = 0f;
+    }
     public void TryAgain(int sceneID)
     {
         Time.timeScale = 1;

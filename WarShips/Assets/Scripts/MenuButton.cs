@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour
 {
     public Animator animator;
+    public CanvasGroup canvasGroup;
 
-
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
     public void LoadScene(int sceneIndex)
     {
         StartCoroutine(Loading(sceneIndex));
