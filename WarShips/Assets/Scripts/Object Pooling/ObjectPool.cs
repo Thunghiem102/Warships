@@ -57,11 +57,10 @@ public class ObjectPool
     // Phương thức reset pool
     public void ResetPool()
     {
-        foreach (var obj in activeObjects)
+        for (int i = activeObjects.Count - 1; i >= 0; i--)
         {
-            ReturnObject(obj); // Trả lại tất cả object vào pool
+            ReturnObject(activeObjects[i]); // Trả lại tất cả object active về pool
         }
-        activeObjects.Clear(); // Xóa danh sách các object đang hoạt động 
-
+        activeObjects.Clear(); // Xóa danh sách các object đang hoạt động
     }
 }

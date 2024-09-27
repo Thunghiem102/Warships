@@ -332,10 +332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fd7dcbb713c7b43b2a6c303bec82b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 3
   allBulletType: EnemyBullets
   experiencePoints: 50
   scoreValue: 10
+  numbersOfBullet: 3
   waypoints: []
   moveSpeed: 30.65
 --- !u!114 &-8779707559061877685

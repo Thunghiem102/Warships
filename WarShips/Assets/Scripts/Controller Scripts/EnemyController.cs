@@ -6,6 +6,7 @@ public class EnemyController : ShooterController
     private BoundaryChecker boundaryChecker;
     public float scoreValue = 10f;
     private ExperienceSystem experienceSystem;
+    public int numbersOfBullet = 2;
 
     public Transform[] waypoints; // Các điểm trên quỹ đạo
     public float moveSpeed = 2f;
@@ -28,7 +29,7 @@ public class EnemyController : ShooterController
         {
             Vector3 spawnPosition = transform.TransformPoint(Vector3.forward * 2);
             Quaternion bulletRotation = transform.rotation;
-            ShootBurst(spawnPosition, bulletRotation); 
+            EnemyShoot(spawnPosition, numberOfBullets);
         }
 
         // Nếu còn waypoint để đến

@@ -6,7 +6,7 @@ public abstract class ShooterController : MonoBehaviour
     public float cooldown = 0.2f; // Thời gian chờ giữa các lần bắn
     public string allBulletType = "Bullets";
     private float time = 0f;
-    protected int numberOfBullets = 2;
+    protected int numberOfBullets = 3;
 
     // Variables for Burst Shooting
     private int bulletsPerBurst = 3; // Số lượng đạn trong mỗi loạt
@@ -14,10 +14,13 @@ public abstract class ShooterController : MonoBehaviour
     private bool isBursting = false;
     private CharacterStats characterStats;
 
+    private Transform player;  // Tham chiếu đến vị trí player
+
     protected virtual void Start()
     {
         time = cooldown; // Khởi tạo thời gian chờ ban đầu
         characterStats = gameObject.GetComponent<CharacterStats>();
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     protected virtual void Update()
@@ -79,6 +82,57 @@ public abstract class ShooterController : MonoBehaviour
             time = cooldown; // Đặt lại thời gian chờ sau khi bắn
         }
     }
+    protected void EnemyShoot(Vector3 spawnPosition, int numberOfBullets)
+    {
+        if (CanShoot() && !isBursting)
+        {
+            StartCoroutine(EnemyBurstRoutine(spawnPosition, numberOfBullets));
+        }
+    }
+    protected void EnemyShootMultiple(Vector3 spawnPosition, int numberOfBullets)
+    {
+        if (CanShoot() && player != null)
+        {
+            // Tính toán hướng từ enemy tới player
+            Vector3 directionToPlayer = (player.position - spawnPosition).normalized;
+
+            // Xác định góc chính giữa (hướng tới player)
+            Quaternion mainRotation = Quaternion.LookRotation(directionToPlayer);
+
+            // Góc lệch giữa mỗi viên đạn
+            float totalAngle = 45f; // Góc tổng cộng phân bố đạn (có thể thay đổi tùy yêu cầu)
+            float startAngle = -totalAngle / 2; // Bắt đầu từ góc trái nhất
+            float angleStep = totalAngle / (numberOfBullets - 1); // Khoảng cách giữa mỗi viên đạn
+
+            for (int i = 0; i < numberOfBullets; i++)
+            {
+                // Tính toán góc xoay cho từng viên đạn
+                float angle = startAngle + angleStep * i;
+                Quaternion bulletRotation = mainRotation * Quaternion.Euler(0, angle, 0); // Xoay quanh trục y
+
+                FireBullet(spawnPosition, bulletRotation);
+            }
+
+            time = cooldown; // Đặt lại thời gian chờ sau khi bắn
+        }
+
+    }
+
+    private IEnumerator EnemyBurstRoutine(Vector3 spawnPosition, int numberOfBullets)
+    {
+        isBursting = true;
+
+        for (int i = 0; i < bulletsPerBurst; i++)
+        {
+            Vector3 currentSpawnPosition = transform.TransformPoint(Vector3.forward * 2);
+            EnemyShootMultiple(currentSpawnPosition, numberOfBullets);
+            yield return new WaitForSeconds(burstCooldown);
+        }
+
+        isBursting = false;
+        time = cooldown; // Đặt lại thời gian chờ giữa các loạt bắn
+    }
+
 
     // FireBullet: Phương thức dùng để bắn đạn (dùng chung)
     private void FireBullet(Vector3 spawnPosition, Quaternion bulletRotation)
