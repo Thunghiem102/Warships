@@ -6,6 +6,7 @@ public class PoolManager : MonoBehaviour
     public GameObject bulletsPrefab;
     public GameObject enemyBulletsPrefab;
     public GameObject enemyPrefab;
+    public GameObject enemyPrefab1;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class PoolManager : MonoBehaviour
         ObjectPoolManager.Instance.CreatePool("Bullets", bulletsPrefab, 10);
         ObjectPoolManager.Instance.CreatePool("EnemyBullets", enemyBulletsPrefab, 5);
         ObjectPoolManager.Instance.CreatePool("Enemy", enemyPrefab, 10);
+        ObjectPoolManager.Instance.CreatePool("Enemy1", enemyPrefab1, 10);
 
     }
 

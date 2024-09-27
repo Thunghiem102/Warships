@@ -83,10 +83,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 12be54eb65207a743835f711d67e14b3, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 913695236764823865, guid: d2da5c2e05457aa458d3c8c124ead304,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
         type: 3}
