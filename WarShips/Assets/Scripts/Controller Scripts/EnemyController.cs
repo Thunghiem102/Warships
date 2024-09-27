@@ -3,10 +3,13 @@
 public class EnemyController : ShooterController
 {
     public int experiencePoints = 50;
-    public float speed = 2.0f; // Tốc độ di chuyển của enemy
     private BoundaryChecker boundaryChecker;
     public float scoreValue = 10f;
     private ExperienceSystem experienceSystem;
+
+    public Transform[] waypoints; // Các điểm trên quỹ đạo
+    public float moveSpeed = 2f;
+    private int currentWaypointIndex = 0;
 
 
     protected override void Start()
@@ -19,8 +22,6 @@ public class EnemyController : ShooterController
     {
         base.Update(); // Gọi Update() của lớp ShooterController để cập nhật thời gian chờ
 
-        // Di chuyển enemy
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
         // Kiểm tra xem có thể bắn hay không
         if (CanShoot())
@@ -28,6 +29,19 @@ public class EnemyController : ShooterController
             Vector3 spawnPosition = transform.TransformPoint(Vector3.forward * 2);
             Quaternion bulletRotation = transform.rotation;
             ShootBurst(spawnPosition, bulletRotation); 
+        }
+
+        // Nếu còn waypoint để đến
+        if (currentWaypointIndex < waypoints.Length)
+        {
+            // Di chuyển enemy về phía waypoint hiện tại
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, moveSpeed * Time.deltaTime);
+
+            // Nếu đã đến gần waypoint hiện tại, chuyển sang waypoint tiếp theo
+            if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
+            {
+                currentWaypointIndex++;
+            }
         }
     }
     private void OnDestroy()
