@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab; // Prefab của enemy
     public Transform[] waypoints;  // Mảng các waypoints trong scene
     public float spawnInterval = 3f; // Khoảng thời gian giữa mỗi lần spawn
-
+    public string enemyS;
     private float timeSinceLastSpawn;
 
     void Update()
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         // Tạo enemy tại vị trí của Spawner hoặc bất kỳ vị trí nào bạn muốn
-        GameObject newEnemy = ObjectPoolManager.Instance.GetFromPool("Enemy");
+        GameObject newEnemy = ObjectPoolManager.Instance.GetFromPool(enemyS);
         newEnemy.transform.position = this.transform.position;
 
         // Gán waypoints cho enemy

@@ -67,12 +67,4 @@ public class EnemyController : ShooterController
     {
         this.waypoints = waypoints;
     }
-    private void OnDisable()
-    {
-        AddScore.Instance.Scoring(scoreValue);
-        if (experienceSystem != null)
-        {
-            experienceSystem.AddExperience(experiencePoints);
-        }
-    }
 }

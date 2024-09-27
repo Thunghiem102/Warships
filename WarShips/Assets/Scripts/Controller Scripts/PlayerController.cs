@@ -33,7 +33,7 @@ public class PlayerController : ShooterController
     protected override void Update()
     {
         base.Update();
-        if (Input.GetKey(KeyCode.Space) && CanShoot())
+        if (CanShoot())
         {
             Vector3 spawnPosition = transform.TransformPoint(Vector3.forward * 2);
             Quaternion bulletRotation = transform.rotation;

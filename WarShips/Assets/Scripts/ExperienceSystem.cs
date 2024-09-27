@@ -6,7 +6,7 @@ public class ExperienceSystem : MonoBehaviour
 {
     public Slider Experiencebar;
     public int currentExperience = 0;
-    public int experienceToLevelUp = 100;
+    public int experienceToLevelUp = 150;
     public int playerLevel = 1;
     public Text PlayerLevelText;
     private CharacterStats characterStats;

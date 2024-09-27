@@ -28,7 +28,7 @@ public class ObjectPoolManager : MonoBehaviour
     {
         if (!pools.ContainsKey(key))
         {
-            ObjectPool newPool = new ObjectPool(prefab, initialSize, transform);
+            ObjectPool newPool = new ObjectPool(prefab, initialSize);
             pools.Add(key, newPool);
         }
     }

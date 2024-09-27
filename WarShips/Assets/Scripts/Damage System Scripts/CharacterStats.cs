@@ -18,11 +18,15 @@ public class CharacterStats : MonoBehaviour
     public delegate void OnHealthChanged(int currentHealth, int maxHealth);
     public event OnHealthChanged onHealthChanged; // Sự kiện thay đổi máu
     public HealthBar healthBar;
+    public float scoreValue = 125;
+    public int experiencePoints = 50;
     private EnemyExplosion explosion;
+    private ExperienceSystem experienceSystem;
 
 
     void Start()
     {
+        experienceSystem = FindObjectOfType<ExperienceSystem>();
         explosion = GetComponent<EnemyExplosion>();
         if (this.CompareTag("Player"))
         {
@@ -59,6 +63,12 @@ public class CharacterStats : MonoBehaviour
             {
                 explosion.Die();
                 gameObject.SetActive(false);
+                AddScore.Instance.Scoring(scoreValue);
+                if (experienceSystem != null)
+                {
+                    experienceSystem.AddExperience(experiencePoints);
+                }
+
             }
             else
             {
