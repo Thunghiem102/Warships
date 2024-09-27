@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 824237164}
+  canvasGroup: {fileID: 824237165}
 --- !u!1 &166676169
 GameObject:
   m_ObjectHideFlags: 0

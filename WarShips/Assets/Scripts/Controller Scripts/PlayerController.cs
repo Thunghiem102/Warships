@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI; 
+using System.Collections.Generic; 
+
+using UnityEngine.EventSystems;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : ShooterController
@@ -15,7 +20,7 @@ public class PlayerController : ShooterController
     [SerializeField] private AudioSource bulletSound;
     public ShootingMode currentShootingMode = ShootingMode.Single;
 
-
+    public bool isHover = false;
 
 
     protected override void Start()
@@ -54,14 +59,14 @@ public class PlayerController : ShooterController
         float moveHorizontal = Input.GetAxis("Horizontal"); // Lấy giá trị nhập từ bàn phím (trục ngang)
         float moveVertical = Input.GetAxis("Vertical"); // Lấy giá trị nhập từ bàn phím (trục dọc)
 
-        if (Input.GetMouseButton(0)) // Nếu nút chuột trái được nhấn
+        if (Input.GetMouseButton(0) && !isHover) // Nếu nút chuột trái được nhấn
         {
             Vector3 mousePosition = Input.mousePosition; // Lấy vị trí chuột trên màn hình
             mousePosition.z = Camera.main.transform.position.y; // Đặt z của vị trí chuột bằng vị trí y của camera
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition); // Chuyển đổi vị trí chuột từ màn hình sang thế giới
             worldPosition.y = transform.position.y; // Giữ nguyên y của đối tượng
 
-            transform.position = Vector3.Lerp(transform.position, worldPosition, lerpSpeed); // Nội suy (lerp) vị trí của đối tượng đến vị trí của chuột
+            transform.position = worldPosition;// Di chuyển trực tiếp đến vị trí của chuột
             transform.position = ClampPositionToCameraBounds(transform.position);
             ZaxisRotation = (worldPosition.x - transform.position.x) * rotationSp / 10 * Time.deltaTime; // Tính toán góc xoay trên trục Z dựa trên vị trí chuột
             ZRotation -= ZaxisRotation; // Cập nhật giá trị góc xoay trên trục Z
@@ -110,7 +115,6 @@ public class PlayerController : ShooterController
     }
     private void OnDestroy()
     {
-       Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
 
