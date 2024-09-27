@@ -58,7 +58,7 @@ public class CharacterStats : MonoBehaviour
             if (characterType == CharacterType.Enemy)
             {
                 explosion.Die();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else
             {

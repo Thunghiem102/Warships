@@ -335,8 +335,9 @@ MonoBehaviour:
   cooldown: 2
   allBulletType: EnemyBullets
   experiencePoints: 50
-  speed: 3
   scoreValue: 10
+  waypoints: []
+  moveSpeed: 30.65
 --- !u!114 &-8779707559061877685
 MonoBehaviour:
   m_ObjectHideFlags: 0

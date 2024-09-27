@@ -5,7 +5,7 @@ public class PoolManager : MonoBehaviour
 {
     public GameObject bulletsPrefab;
     public GameObject enemyBulletsPrefab;
-
+    public GameObject enemyPrefab;
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class PoolManager : MonoBehaviour
         // Reset hoặc khởi tạo lại pool cho scene mới
         ObjectPoolManager.Instance.CreatePool("Bullets", bulletsPrefab, 10);
         ObjectPoolManager.Instance.CreatePool("EnemyBullets", enemyBulletsPrefab, 5);
+        ObjectPoolManager.Instance.CreatePool("Enemy", enemyPrefab, 10);
 
     }
 
