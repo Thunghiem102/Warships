@@ -159,7 +159,7 @@ MonoBehaviour:
   continueButton: {fileID: 2093241521}
   sceneIndex: 2
   slider: {fileID: 1916500575}
-  loadingText: {fileID: 0}
+  loadingText: {fileID: 1824436326}
   fakeLoadingSpeed: 1
 --- !u!114 &80218782
 MonoBehaviour:
