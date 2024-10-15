@@ -26,7 +26,7 @@ public class CharacterStats : MonoBehaviour
 
     void Start()
     {
-        experienceSystem = FindObjectOfType<ExperienceSystem>();
+        experienceSystem = FindFirstObjectByType<ExperienceSystem>();
         explosion = GetComponent<EnemyExplosion>();
         if (this.CompareTag("Player"))
         {

@@ -16,7 +16,7 @@ public class EnemyController : ShooterController
     protected override void Start()
     {
         base.Start();
-        experienceSystem = FindObjectOfType<ExperienceSystem>();
+        experienceSystem = FindFirstObjectByType<ExperienceSystem>();
         boundaryChecker = gameObject.AddComponent<BoundaryChecker>();
     }
    protected override void Update()

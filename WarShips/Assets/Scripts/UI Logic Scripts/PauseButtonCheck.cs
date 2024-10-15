@@ -19,7 +19,6 @@ public class PauseButtonCheck : MonoBehaviour
     {
         if (IsPointerOverSpecificUIElement(targetElementName))
         {
-            Debug.Log("Clicked on UI element: " + targetElementName);
             playerController.isHover = true;
         }
         else { playerController.isHover = false; }

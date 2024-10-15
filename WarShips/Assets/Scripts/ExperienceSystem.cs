@@ -39,7 +39,7 @@ public class ExperienceSystem : MonoBehaviour
 
     void LevelUp()
     {
-        Debug.Log("Level Up");
+        
         playerLevel++;
         PlayerLevelText.text = playerLevel.ToString();
         currentExperience -= experienceToLevelUp;

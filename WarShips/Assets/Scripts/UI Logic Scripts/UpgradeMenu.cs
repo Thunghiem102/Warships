@@ -43,7 +43,7 @@ public class UpgradeMenu : MonoBehaviour
             "Switch to Single Shot Mode",
             () =>
             {
-                FindObjectOfType<PlayerController>().currentShootingMode = ShootingMode.Single;
+                FindFirstObjectByType<PlayerController>().currentShootingMode = ShootingMode.Single;
             }));
 
         shootingModeUpgrades.Add(new UpgradeOption(
@@ -51,7 +51,7 @@ public class UpgradeMenu : MonoBehaviour
             "Switch to Burst Shot Mode",
             () =>
             {
-                FindObjectOfType<PlayerController>().currentShootingMode = ShootingMode.Burst;
+                FindFirstObjectByType<PlayerController>().currentShootingMode = ShootingMode.Burst;
             }));
 
         shootingModeUpgrades.Add(new UpgradeOption(
@@ -59,7 +59,7 @@ public class UpgradeMenu : MonoBehaviour
             "Switch to Multiple Directions Shot Mode",
             () =>
             {
-                FindObjectOfType<PlayerController>().currentShootingMode = ShootingMode.MultipleDirections;
+                FindFirstObjectByType<PlayerController>().currentShootingMode = ShootingMode.MultipleDirections;
             }));
 
         // Khởi tạo các tùy chọn nâng cấp chỉ số
@@ -126,7 +126,7 @@ public class UpgradeMenu : MonoBehaviour
     public void ShowUpgradeMenu(int levelsGained)
     {
         // Tìm kiếm `CharacterStats` chỉ dành cho Player
-        characterStats = FindObjectsOfType<CharacterStats>().FirstOrDefault(cs => cs.characterType == CharacterType.Player);
+        characterStats = FindObjectsByType<CharacterStats>(FindObjectsSortMode.None).FirstOrDefault(cs => cs.characterType == CharacterType.Player);
 
         levelsRemaining = levelsGained;
 

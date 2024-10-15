@@ -80,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 12be54eb65207a743835f711d67e14b3, type: 2}
     - target: {fileID: -5754084199372789682, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
@@ -98,6 +98,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -226,6 +231,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e490b731daac39045b75a96b4233208f, type: 3}
+  m_Resource: {fileID: 8300000, guid: e490b731daac39045b75a96b4233208f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.73
   m_Pitch: 1
@@ -342,6 +348,7 @@ MonoBehaviour:
   allBulletType: EnemyBullets
   experiencePoints: 50
   scoreValue: 10
+  numbersOfBullet: 2
   waypoints: []
   moveSpeed: 30.65
 --- !u!114 &-8779707559061877685
@@ -362,6 +369,8 @@ MonoBehaviour:
   currentHealth: 0
   characterType: 1
   healthBar: {fileID: 0}
+  scoreValue: 125
+  experiencePoints: 50
 --- !u!4 &4079180191295274358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e5a3284e53ba5f4b8b58b493ce933c6,
@@ -435,6 +444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: enemyWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}

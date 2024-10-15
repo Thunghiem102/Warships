@@ -39,13 +39,6 @@ public class ObjectScaling : MonoBehaviour
         float scaleFactorX = cameraWidth / originalWidth;
         float scaleFactorZ = cameraHeight / originalHeight;
 
-        Debug.Log("Camera Width: " + cameraWidth);
-        Debug.Log("Camera Height: " + cameraHeight);
-        Debug.Log("Mesh Width: " + originalWidth);
-        Debug.Log("Mesh Height: " + originalHeight);
-        Debug.Log("Scale Factor X: " + scaleFactorX);
-        Debug.Log("Scale Factor Z: " + scaleFactorZ);
-
         // Áp dụng tỷ lệ scale cho GameObject
         transform.localScale = new Vector3(scaleFactorX, originalScale.y, scaleFactorZ );
         // Cập nhật bounding box của mesh
